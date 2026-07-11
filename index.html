@@ -5,36 +5,463 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Politique de confidentialité — Wema</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1A5276;
+      --accent: #2563EB;
+      --green: #1E8449;
+      --purple: #8E44AD;
+      --orange: #D35400;
+      --yellow: #F39C12;
+      --red: #E74C3C;
+      --bg: #F8F9FA;
+      --white: #ffffff;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #F8F9FA;
-      color: #1a1a1a;
-      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
+    /* ── Header ── */
     header {
-      background-color: #1A5276;
-      padding: 32px 24px;
-      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      padding: 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 0 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+
+    .header-badge span {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .header-badge svg {
+      width: 14px; height: 14px;
+      fill: rgba(255,255,255,0.8);
     }
 
     header h1 {
-      color: #ffffff;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
 
-    header p {
+    .header-tagline {
+      font-size: 16px;
       color: rgba(255,255,255,0.75);
-      font-size: 13px;
-      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .header-tagline strong {
+      color: rgba(255,255,255,0.95);
+      font-weight: 700;
+    }
+
+    .header-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .header-date svg {
+      width: 13px; height: 13px;
+      fill: rgba(255,255,255,0.7);
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    /* ── Sections accordéon ── */
+    .section {
+      background: var(--white);
+      border-radius: 16px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .section:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      min-width: 24px;
+      opacity: 0.5;
+    }
+
+    .section-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 18px; height: 18px;
+    }
+
+    .section-title {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-chevron {
+      width: 20px; height: 20px;
+      fill: #9CA3AF;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .section.open .section-chevron {
+      transform: rotate(180deg);
+    }
+
+    .section-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .section.open .section-body {
+      display: block;
+    }
+
+    .item {
+      padding: 13px 20px 13px 98px;
+      border-bottom: 1px solid #F9FAFB;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .item.note {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .item-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .item.note .item-label {
+      /* couleur définie inline */
+    }
+
+    .item-value {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Responsive desktop ── */
+    @media (min-width: 768px) {
+      header { padding: 0 40px; }
+      .header-inner { padding: 64px 0 56px; }
+      main { padding: 40px 40px 80px; }
+      header h1 { font-size: 48px; }
+      .section-header { padding: 20px 24px; }
+      .item { padding: 14px 24px 14px 102px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="header-inner">
+      <div class="header-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        <span>Wema · Confidentialité</span>
+      </div>
+      <h1>Vos données ne nous<br>appartiennent pas.</h1>
+      <p class="header-tagline">Elles <strong>vous</strong> appartiennent.</p>
+      <div class="header-date">
+        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+        Dernière mise à jour : 11 juillet 2026
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <!-- 01 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#2563EB">01</span>
+        <div class="section-icon" style="background:rgba(37,99,235,0.08)">
+          <svg viewBox="0 0 24 24" fill="#2563EB"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+        </div>
+        <span class="section-title">Données collectées</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Informations de compte</div><div class="item-value">Nom, prénom, adresse email, numéro de téléphone.</div></div>
+        <div class="item"><div class="item-label">Photo de profil</div><div class="item-value">Uniquement si vous choisissez d'en ajouter une.</div></div>
+        <div class="item"><div class="item-label">Documents</div><div class="item-value">Images et fichiers PDF que vous scannez ou importez dans l'application.</div></div>
+        <div class="item"><div class="item-label">Métadonnées</div><div class="item-value">Titre, catégorie, date d'ajout et date d'expiration de vos documents.</div></div>
+        <div class="item"><div class="item-label">Feedbacks</div><div class="item-value">Messages envoyés volontairement via le formulaire de retour.</div></div>
+        <div class="item note"><div class="item-label" style="color:#2563EB">Ce que nous ne collectons pas</div><div class="item-value">Aucune donnée de localisation. Aucun suivi publicitaire. Aucune vente de données à des tiers.</div></div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#1E8449">02</span>
+        <div class="section-icon" style="background:rgba(30,132,73,0.08)">
+          <svg viewBox="0 0 24 24" fill="#1E8449"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <span class="section-title">Utilisation des données</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Gestion de compte</div><div class="item-value">Créer et gérer votre espace personnel sur Wema.</div></div>
+        <div class="item"><div class="item-label">Synchronisation</div><div class="item-value">Sauvegarder et synchroniser vos documents entre votre appareil et le cloud.</div></div>
+        <div class="item"><div class="item-label">Alertes</div><div class="item-value">Vous notifier avant l'expiration de vos documents importants.</div></div>
+        <div class="item"><div class="item-label">Amélioration</div><div class="item-value">Améliorer l'application à partir de vos retours volontaires.</div></div>
+        <div class="item"><div class="item-label">Sécurité</div><div class="item-value">Assurer la sécurité et la continuité du service.</div></div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#8E44AD">03</span>
+        <div class="section-icon" style="background:rgba(142,68,173,0.08)">
+          <svg viewBox="0 0 24 24" fill="#8E44AD"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <span class="section-title">Stockage et sécurité</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Stockage local</div><div class="item-value">Vos documents sont d'abord enregistrés sur votre appareil via une base de données locale sécurisée.</div></div>
+        <div class="item"><div class="item-label">Cloud</div><div class="item-value">Les données sont synchronisées avec nos serveurs Supabase, avec chiffrement en transit (HTTPS) et au repos.</div></div>
+        <div class="item"><div class="item-label">Accès protégé</div><div class="item-value">L'application est protégée par code PIN ou empreinte digitale selon votre choix.</div></div>
+        <div class="item"><div class="item-label">Isolation</div><div class="item-value">Chaque utilisateur n'accède qu'à ses propres données grâce à des règles de sécurité strictes.</div></div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#D35400">04</span>
+        <div class="section-icon" style="background:rgba(211,84,0,0.08)">
+          <svg viewBox="0 0 24 24" fill="#D35400"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </div>
+        <span class="section-title">Partage des données</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Principe</div><div class="item-value">Wema ne partage vos données avec aucun tiers à des fins commerciales.</div></div>
+        <div class="item"><div class="item-label">Supabase Inc.</div><div class="item-value">Hébergement sécurisé des données et authentification.</div></div>
+        <div class="item"><div class="item-label">Resend</div><div class="item-value">Envoi des emails transactionnels (confirmation de compte, notifications).</div></div>
+        <div class="item note"><div class="item-label" style="color:#D35400">Engagement</div><div class="item-value">Ces prestataires sont contractuellement tenus de protéger vos données et de ne pas les utiliser à d'autres fins.</div></div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#F39C12">05</span>
+        <div class="section-icon" style="background:rgba(243,156,18,0.08)">
+          <svg viewBox="0 0 24 24" fill="#F39C12"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <span class="section-title">Conservation des données</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Durée</div><div class="item-value">Vos données sont conservées tant que votre compte est actif.</div></div>
+        <div class="item"><div class="item-label">Suppression</div><div class="item-value">En cas de suppression de compte, toutes vos données personnelles et documents sont supprimés de façon immédiate, définitive et irréversible.</div></div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#2563EB">06</span>
+        <div class="section-icon" style="background:rgba(37,99,235,0.08)">
+          <svg viewBox="0 0 24 24" fill="#2563EB"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        </div>
+        <span class="section-title">Vos droits</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Accès</div><div class="item-value">Consulter les données que nous détenons sur vous.</div></div>
+        <div class="item"><div class="item-label">Rectification</div><div class="item-value">Corriger vos informations depuis l'écran Profil de l'application.</div></div>
+        <div class="item"><div class="item-label">Effacement</div><div class="item-value">Supprimer définitivement votre compte et toutes vos données depuis l'application.</div></div>
+        <div class="item"><div class="item-label">Portabilité</div><div class="item-value">Exporter vos documents à tout moment via la fonction de partage.</div></div>
+        <div class="item note"><div class="item-label" style="color:#2563EB">Contact</div><div class="item-value">Pour exercer ces droits : contact.wema.app@gmail.com</div></div>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#E74C3C">07</span>
+        <div class="section-icon" style="background:rgba(231,76,60,0.08)">
+          <svg viewBox="0 0 24 24" fill="#E74C3C"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        </div>
+        <span class="section-title">Mineurs</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Âge minimum</div><div class="item-value">Wema n'est pas destinée aux enfants de moins de 13 ans.</div></div>
+        <div class="item"><div class="item-label">Collecte</div><div class="item-value">Nous ne collectons pas sciemment de données personnelles concernant des mineurs de moins de 13 ans.</div></div>
+        <div class="item"><div class="item-label">Signalement</div><div class="item-value">Si vous pensez qu'un enfant nous a fourni des informations, contactez-nous pour que nous puissions les supprimer.</div></div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#1A5276">08</span>
+        <div class="section-icon" style="background:rgba(26,82,118,0.08)">
+          <svg viewBox="0 0 24 24" fill="#1A5276"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        </div>
+        <span class="section-title">Modifications</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Droit de modification</div><div class="item-value">Nous nous réservons le droit de modifier cette politique à tout moment.</div></div>
+        <div class="item"><div class="item-label">Notification</div><div class="item-value">En cas de modification significative, vous serez informé via une notification dans l'application.</div></div>
+        <div class="item"><div class="item-label">Date</div><div class="item-value">La date de dernière mise à jour est indiquée en haut de ce document.</div></div>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-number" style="color:#1E8449">09</span>
+        <div class="section-icon" style="background:rgba(30,132,73,0.08)">
+          <svg viewBox="0 0 24 24" fill="#1E8449"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <span class="section-title">Contact</span>
+        <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="item"><div class="item-label">Email</div><div class="item-value"><a href="mailto:contact.wema.app@gmail.com" style="color:#2563EB">contact.wema.app@gmail.com</a></div></div>
+        <div class="item"><div class="item-label">Éditeur</div><div class="item-value">Stéphane Gbacada, opérant sous le nom commercial Zar'El</div></div>
+        <div class="item"><div class="item-label">Localisation</div><div class="item-value">Cotonou, Bénin</div></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    © 2026 Zar'El · Application Wema ·
+    <a href="mailto:contact.wema.app@gmail.com">contact.wema.app@gmail.com</a>
+  </footer>
+
+  <script>
+    function toggle(header) {
+      const section = header.parentElement;
+      section.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>      margin-top: 6px;
     }
 
     .container {
