@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supprimer mon compte Wema</title>
+<style>
+  :root {
+    --primary: #1A5276;
+    --accent: #2563EB;
+    --red: #E74C3C;
+    --green: #1E8449;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --bg: #F8F9FA;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1A3A5C, var(--primary), var(--accent));
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+
+  .wordmark {
+    font-size: 34px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .wordmark span {
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  main {
+    max-width: 640px;
+    margin: -24px auto 60px;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    padding: 28px 24px;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--accent);
+    margin: 0 0 16px;
+  }
+
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .step:last-child { margin-bottom: 0; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.1);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-text strong {
+    display: block;
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+
+  .step-text span {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .alt-box {
+    background: #EBF5FB;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 13.5px;
+    color: var(--primary);
+  }
+
+  .alt-box a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .data-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .data-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+  }
+
+  .data-list li:last-child { border-bottom: none; }
+
+  .dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+
+  .dot.red { background: var(--red); }
+  .dot.green { background: var(--green); }
+
+  .warning {
+    background: #FDEBEA;
+    border: 1px solid rgba(231,76,60,0.25);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 20px;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">W<span>ema</span></div>
+  <p>Suppression de compte et de vos données</p>
+</header>
+
+<main>
+
+  <div class="card">
+    <h1>Supprimer votre compte Wema</h1>
+    <p class="subtitle">
+      Vous pouvez demander la suppression définitive de votre compte et de toutes
+      les données associées à tout moment. Cette page explique comment procéder,
+      que vous ayez l'application installée ou non.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Depuis l'application (recommandé)</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Ouvrez Wema et connectez-vous</strong>
+        <span>Avec l'email et le mot de passe associés à votre compte.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>Allez dans Profil</strong>
+        <span>Onglet en bas à droite de l'écran d'accueil.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Appuyez sur « Supprimer mon compte »</strong>
+        <span>Tout en bas de l'écran Profil, en rouge.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <strong>Confirmez avec votre mot de passe</strong>
+        <span>La suppression est appliquée immédiatement après confirmation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Sans accès à l'application</h2>
+    <div class="alt-box">
+      Si vous ne pouvez pas ou ne souhaitez pas réinstaller l'application,
+      envoyez une demande de suppression de compte à
+      <a href="mailto:contact.wema.app@gmail.com">contact.wema.app@gmail.com</a>
+      depuis l'adresse email associée à votre compte Wema. Votre demande sera
+      traitée sous 7 jours ouvrés.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Ce qui est supprimé</h2>
+    <ul class="data-list">
+      <li><span class="dot red"></span> Votre profil (nom, email, téléphone, date de naissance, photo)</li>
+      <li><span class="dot red"></span> Tous les documents scannés ou importés, et leurs pages</li>
+      <li><span class="dot red"></span> Vos alertes, préférences et historique d'utilisation</li>
+      <li><span class="dot red"></span> Vos identifiants de connexion et votre code PIN</li>
+    </ul>
+    <div style="height:14px"></div>
+    <div class="warning">
+      La suppression est immédiate, définitive et irréversible. Aucune donnée
+      n'est conservée au-delà de cette action, à l'exception des obligations
+      légales éventuelles (par exemple en cas de litige en cours).
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Besoin d'aide ?</h2>
+    <p class="subtitle" style="margin-bottom:12px;">
+      Pour toute question sur la suppression de votre compte ou sur vos données,
+      contactez-nous directement.
+    </p>
+    <div class="alt-box">
+      <strong style="color:var(--primary)">Éditeur :</strong> Stéphane Jean-Jacques GBACADA AKOHOU,
+      opérant sous le nom commercial Zar'El — Cotonou, Bénin<br><br>
+      <strong style="color:var(--primary)">Email :</strong>
+      <a href="mailto:contact.wema.app@gmail.com">contact.wema.app@gmail.com</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Zar'El · Wema — Voir aussi notre
+  <a href="https://steph3j.github.io/wema-privacy">politique de confidentialité</a>
+</footer>
+
+</body>
+</html>
