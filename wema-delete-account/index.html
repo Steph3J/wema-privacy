@@ -33,16 +33,15 @@
   }
 
   .wordmark {
-    font-size: 34px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
-  .wordmark span {
-    font-style: italic;
-    font-weight: 400;
-    opacity: 0.85;
+  
+  .wordmark img {
+    width: 120px;
+    height: auto;
+    display: block;
   }
 
   header p {
@@ -186,7 +185,9 @@
 <body>
 
 <header>
-  <div class="wordmark"><span>Wema</span></div>
+  <div class="wordmark">
+    <img src="logo_wema.png" alt="Wema">
+  </div>
   <p>Suppression de compte et de vos données</p>
 </header>
 
