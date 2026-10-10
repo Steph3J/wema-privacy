@@ -60,9 +60,16 @@
     .header-inner {
       max-width: 760px;
       margin: 0 auto;
-      padding: 48px 0 40px;
+      padding: 40px 0 40px;
       position: relative;
       z-index: 1;
+    }
+
+    .wordmark img {
+      width: 120px;
+      height: auto;
+      display: block;
+      margin-bottom: 22px;
     }
 
     .header-badge {
@@ -225,15 +232,13 @@
       margin-bottom: 3px;
     }
 
-    .item.note .item-label {
-      /* couleur définie inline */
-    }
-
     .item-value {
       font-size: 12px;
       color: var(--muted);
       line-height: 1.6;
     }
+
+    .item-value a { color: var(--accent); }
 
     /* ── Footer ── */
     footer {
@@ -255,7 +260,7 @@
     /* ── Responsive desktop ── */
     @media (min-width: 768px) {
       header { padding: 0 40px; }
-      .header-inner { padding: 64px 0 56px; }
+      .header-inner { padding: 56px 0 56px; }
       main { padding: 40px 40px 80px; }
       header h1 { font-size: 48px; }
       .section-header { padding: 20px 24px; }
@@ -268,6 +273,10 @@
   <!-- ── Header ── -->
   <header>
     <div class="header-inner">
+      <!-- Le logo se trouve dans le dossier de la page de suppression de compte -->
+      <div class="wordmark">
+        <img src="wema-delete-account/logo_wema.png" alt="Wema">
+      </div>
       <div class="header-badge">
         <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
         <span>Wema · Confidentialité</span>
@@ -276,7 +285,7 @@
       <p class="header-tagline">Elles <strong>vous</strong> appartiennent.</p>
       <div class="header-date">
         <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-        Dernière mise à jour : 11 juillet 2026
+        Dernière mise à jour : 10 octobre 2026
       </div>
     </div>
   </header>
@@ -295,11 +304,12 @@
         <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </div>
       <div class="section-body">
-        <div class="item"><div class="item-label">Informations de compte</div><div class="item-value">Nom, prénom, adresse email, numéro de téléphone.</div></div>
+        <div class="item"><div class="item-label">Informations de compte</div><div class="item-value">Nom, prénom, adresse email, numéro de téléphone et date de naissance. La date de naissance est demandée à l'inscription pour vérifier l'âge minimum (13 ans) ; elle est enregistrée avec les informations de votre compte.</div></div>
         <div class="item"><div class="item-label">Photo de profil</div><div class="item-value">Uniquement si vous choisissez d'en ajouter une.</div></div>
         <div class="item"><div class="item-label">Documents</div><div class="item-value">Images et fichiers PDF que vous scannez ou importez dans l'application.</div></div>
         <div class="item"><div class="item-label">Métadonnées</div><div class="item-value">Titre, catégorie, date d'ajout et date d'expiration de vos documents.</div></div>
-        <div class="item"><div class="item-label">Feedbacks</div><div class="item-value">Messages envoyés volontairement via le formulaire de retour.</div></div>
+        <div class="item"><div class="item-label">Retours, signalements et avis</div><div class="item-value">Messages envoyés volontairement via le formulaire de retour ; signalements d'une information erronée sur une démarche (type de problème et message) ; avis « Ces informations vous ont-elles aidé ? » (oui ou non) sur une démarche. Les signalements et les avis sont liés à votre compte.</div></div>
+        <div class="item"><div class="item-label">Liste d'attente Wema Premium</div><div class="item-value">L'adresse email que vous saisissez volontairement pour être prévenu du lancement de Wema Premium.</div></div>
         <div class="item note"><div class="item-label" style="color:#2563EB">Ce que nous ne collectons pas</div><div class="item-value">Aucune donnée de localisation. Aucun suivi publicitaire. Aucune vente de données à des tiers.</div></div>
       </div>
     </div>
@@ -317,8 +327,9 @@
       <div class="section-body">
         <div class="item"><div class="item-label">Gestion de compte</div><div class="item-value">Créer et gérer votre espace personnel sur Wema.</div></div>
         <div class="item"><div class="item-label">Synchronisation</div><div class="item-value">Sauvegarder et synchroniser vos documents entre votre appareil et le cloud.</div></div>
-        <div class="item"><div class="item-label">Alertes</div><div class="item-value">Vous notifier avant l'expiration de vos documents importants.</div></div>
-        <div class="item"><div class="item-label">Amélioration</div><div class="item-value">Améliorer l'application à partir de vos retours volontaires.</div></div>
+        <div class="item"><div class="item-label">Alertes</div><div class="item-value">Vous notifier avant l'expiration de vos documents importants. Ces rappels sont programmés sur votre appareil.</div></div>
+        <div class="item"><div class="item-label">Amélioration</div><div class="item-value">Corriger et améliorer les informations des démarches à partir de vos retours, signalements et avis.</div></div>
+        <div class="item"><div class="item-label">Liste d'attente</div><div class="item-value">Vous prévenir par email du lancement de Wema Premium, uniquement si vous vous y êtes inscrit.</div></div>
         <div class="item"><div class="item-label">Sécurité</div><div class="item-value">Assurer la sécurité et la continuité du service.</div></div>
       </div>
     </div>
@@ -334,10 +345,11 @@
         <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </div>
       <div class="section-body">
-        <div class="item"><div class="item-label">Stockage local</div><div class="item-value">Vos documents sont d'abord enregistrés sur votre appareil via une base de données locale sécurisée.</div></div>
-        <div class="item"><div class="item-label">Cloud</div><div class="item-value">Les données sont synchronisées avec nos serveurs Supabase, avec chiffrement en transit (HTTPS) et au repos.</div></div>
-        <div class="item"><div class="item-label">Accès protégé</div><div class="item-value">L'application est protégée par code PIN ou empreinte digitale selon votre choix.</div></div>
-        <div class="item"><div class="item-label">Isolation</div><div class="item-value">Chaque utilisateur n'accède qu'à ses propres données grâce à des règles de sécurité strictes.</div></div>
+        <div class="item"><div class="item-label">Stockage local</div><div class="item-value">Vos documents sont d'abord enregistrés dans l'espace privé de l'application sur votre appareil. Nous vous recommandons de protéger aussi votre téléphone par un verrouillage d'écran.</div></div>
+        <div class="item"><div class="item-label">Cloud</div><div class="item-value">Les données sont synchronisées avec les serveurs de notre hébergeur Supabase, situés en Irlande (Union européenne), avec chiffrement en transit (HTTPS) et au repos. Les fichiers sont stockés dans un espace privé, jamais accessible publiquement.</div></div>
+        <div class="item"><div class="item-label">Accès protégé</div><div class="item-value">L'application est protégée par un code PIN à 4 chiffres, avec blocage temporaire après plusieurs essais erronés, et par l'empreinte digitale si vous l'activez. Votre PIN reste uniquement sur votre appareil, stocké de façon sécurisée : il n'est jamais envoyé à nos serveurs.</div></div>
+        <div class="item"><div class="item-label">Isolation</div><div class="item-value">Chaque utilisateur n'accède qu'à ses propres données grâce à des règles d'accès strictes appliquées au niveau de la base de données.</div></div>
+        <div class="item note"><div class="item-label" style="color:#8E44AD">Accès de l'éditeur</div><div class="item-value">Wema n'utilise pas de chiffrement de bout en bout. L'accès d'administration à l'infrastructure est limité à l'éditeur et n'est utilisé que pour la maintenance et le support.</div></div>
       </div>
     </div>
 
@@ -353,9 +365,10 @@
       </div>
       <div class="section-body">
         <div class="item"><div class="item-label">Principe</div><div class="item-value">Wema ne partage vos données avec aucun tiers à des fins commerciales.</div></div>
-        <div class="item"><div class="item-label">Supabase Inc.</div><div class="item-value">Hébergement sécurisé des données et authentification.</div></div>
-        <div class="item"><div class="item-label">Resend</div><div class="item-value">Envoi des emails transactionnels (confirmation de compte, notifications).</div></div>
-        <div class="item note"><div class="item-label" style="color:#D35400">Engagement</div><div class="item-value">Ces prestataires sont contractuellement tenus de protéger vos données et de ne pas les utiliser à d'autres fins.</div></div>
+        <div class="item"><div class="item-label">Supabase Inc.</div><div class="item-value">Hébergement des données, des fichiers et authentification.</div></div>
+        <div class="item"><div class="item-label">Resend</div><div class="item-value">Envoi des emails transactionnels (confirmation de compte, récupération de mot de passe).</div></div>
+        <div class="item"><div class="item-label">À votre initiative</div><div class="item-value">Lorsque vous partagez une démarche ou un document via WhatsApp ou une autre application, le contenu est transmis à l'application que vous choisissez. Wema n'en conserve aucune copie.</div></div>
+        <div class="item note"><div class="item-label" style="color:#D35400">Engagement</div><div class="item-value">Nos prestataires agissent comme sous-traitants : ils sont tenus de protéger vos données et de ne pas les utiliser à d'autres fins.</div></div>
       </div>
     </div>
 
@@ -371,7 +384,7 @@
       </div>
       <div class="section-body">
         <div class="item"><div class="item-label">Durée</div><div class="item-value">Vos données sont conservées tant que votre compte est actif.</div></div>
-        <div class="item"><div class="item-label">Suppression</div><div class="item-value">En cas de suppression de compte, toutes vos données personnelles et documents sont supprimés de façon immédiate, définitive et irréversible.</div></div>
+        <div class="item"><div class="item-label">Suppression</div><div class="item-value">En cas de suppression de compte, vos données personnelles, vos documents et fichiers, vos signalements et avis, ainsi que votre inscription éventuelle à la liste d'attente Premium sont supprimés de façon définitive et irréversible. Voir la <a href="wema-delete-account/">page de suppression de compte</a>.</div></div>
       </div>
     </div>
 
@@ -386,10 +399,11 @@
         <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </div>
       <div class="section-body">
-        <div class="item"><div class="item-label">Accès</div><div class="item-value">Consulter les données que nous détenons sur vous.</div></div>
+        <div class="item"><div class="item-label">Accès</div><div class="item-value">Consulter les données que nous détenons sur vous, depuis l'application ou en nous écrivant.</div></div>
         <div class="item"><div class="item-label">Rectification</div><div class="item-value">Corriger vos informations depuis l'écran Profil de l'application.</div></div>
-        <div class="item"><div class="item-label">Effacement</div><div class="item-value">Supprimer définitivement votre compte et toutes vos données depuis l'application.</div></div>
+        <div class="item"><div class="item-label">Effacement</div><div class="item-value">Supprimer définitivement votre compte et toutes vos données depuis l'application, ou par email (voir la <a href="wema-delete-account/">page de suppression de compte</a>).</div></div>
         <div class="item"><div class="item-label">Portabilité</div><div class="item-value">Exporter vos documents à tout moment via la fonction de partage.</div></div>
+        <div class="item"><div class="item-label">Réclamation</div><div class="item-value">Vous pouvez aussi saisir l'autorité de protection des données personnelles de votre pays.</div></div>
         <div class="item note"><div class="item-label" style="color:#2563EB">Contact</div><div class="item-value">Pour exercer ces droits : contact.wema.app@gmail.com</div></div>
       </div>
     </div>
@@ -405,7 +419,7 @@
         <svg class="section-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </div>
       <div class="section-body">
-        <div class="item"><div class="item-label">Âge minimum</div><div class="item-value">Wema n'est pas destinée aux enfants de moins de 13 ans.</div></div>
+        <div class="item"><div class="item-label">Âge minimum</div><div class="item-value">Wema n'est pas destinée aux enfants de moins de 13 ans. L'âge est vérifié à l'inscription à partir de la date de naissance.</div></div>
         <div class="item"><div class="item-label">Collecte</div><div class="item-value">Nous ne collectons pas sciemment de données personnelles concernant des mineurs de moins de 13 ans.</div></div>
         <div class="item"><div class="item-label">Signalement</div><div class="item-value">Si vous pensez qu'un enfant nous a fourni des informations, contactez-nous pour que nous puissions les supprimer.</div></div>
       </div>
@@ -440,7 +454,7 @@
       </div>
       <div class="section-body">
         <div class="item"><div class="item-label">Email</div><div class="item-value"><a href="mailto:contact.wema.app@gmail.com" style="color:#2563EB">contact.wema.app@gmail.com</a></div></div>
-        <div class="item"><div class="item-label">Éditeur</div><div class="item-value">Stéphane Jean-Jacques GBACADA, opérant sous le nom commercial Zar'El</div></div>
+        <div class="item"><div class="item-label">Éditeur</div><div class="item-value">Stéphane Jean-Jacques GBACADA AKOHOU, opérant sous le nom commercial Zar'El</div></div>
         <div class="item"><div class="item-label">Localisation</div><div class="item-value">Cotonou, Bénin</div></div>
       </div>
     </div>
